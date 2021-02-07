@@ -1,25 +1,19 @@
-name: CI-CD-Pipeline-to-AWS-ElasticBeastalk
-env:
-  EB_PACKAGE_S3_BUCKET_NAME : "adv-it-flask-application-packages"
-  EB_APPLICATION_NAME       : "MyFlask"
-  EB_ENVIRONMENT_NAME       : "MyFlask-env"
-  DEPLOY_PACKAGE_NAME       : "flask_app_${{ github.sha }}.zip"
-  AWS_REGION_NAME           : "eu-central-1"
-
-on: 
-  push:
-    branches: 
-      - master
-
-jobs:
-  my_ci_part:
+name: CI-CD-pipeline-to-AWS
+env :
+  El_Package_S3    : "mykhailo-app-package"
+  Eb_App_Name      : "My_APP"
+  Eb_Enviroment_Var: "My_App-env"
+  Deploy_package_na: "my_app_${{ github.sha }}.zip"
+  Aws_Region_Name  : "eu-central-1"
+on :
+ push:
+   branches: 
+       - main
+jobs: 
+ my_ci:
     runs-on: ubuntu-latest
-
     steps:
     - name: Git clone our repo
       uses: actions/checkout@v1
-       
-    - name: Create ZIP deployment package
-      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
-   
-    - name: Configure my AWS Credentials
+    - name: Create Zip deployment package
+      run : zip -r ${{ env.Deploy_package_na }} ./ -x *.git*
