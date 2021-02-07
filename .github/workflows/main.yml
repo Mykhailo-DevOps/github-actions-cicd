@@ -46,7 +46,7 @@ jobs:
     - name:  Create new ElastickBeanstalk App
       run : |
        aws elasticbeanstalk create-application-version \
-       --application-name ${{ env.My_APP }} \
+       --application-name ${{ env.Eb_App_Name }} \
        --source-bundle S3Bucket="${{ env.El_Package_S3 }}",S3Key="${{ env.Deploy_package_na }}" \
        --version-label "Ver-${{ github.sha }}" \
        --description "CoimmitSHA-${{ github.sha }}" 
