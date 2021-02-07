@@ -1,8 +1,8 @@
 name: CI-CD-pipeline-to-AWS
 env :
   El_Package_S3    : "mykhailok"
-  Eb_App_Name      : "My_APP"
-  Eb_Enviroment_Var: "My_App-env"
+  Eb_App_Name      : "Mybeanstalk"
+  Eb_Enviroment_Var: "Mybeanstalk-env"
   Deploy_package_na: "my_app_${{ github.sha }}.zip"
   Aws_Region_Name  : "eu-central-1"
 on :
@@ -44,7 +44,7 @@ jobs:
         aws-region              : ${{ env.Aws_Region_Name }}
         
     - name:  Create new ElastickBeanstalk App
-      run : 
+      run : |
        aws elasticbeanstalk create-application-version \
        --application-name ${{ env.My_APP }} \
        --source-bundle S3Bucket="${{ env.El_Package_S3 }}",S3Key="${{ env.Deploy_package_na }}" \
