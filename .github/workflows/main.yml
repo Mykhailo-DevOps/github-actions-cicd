@@ -1,6 +1,6 @@
 name: CI-CD-pipeline-to-AWS
 env :
-  El_Package_S3    : "mykhailo-app-package"
+  El_Package_S3    : "mykhailok"
   Eb_App_Name      : "My_APP"
   Eb_Enviroment_Var: "My_App-env"
   Deploy_package_na: "my_app_${{ github.sha }}.zip"
