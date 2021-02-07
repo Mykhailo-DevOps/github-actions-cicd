@@ -1,0 +1,23 @@
+name: CI-CD-pipeline-to-AWS
+env:
+  El_Package_S3    : "mykhailo-app-package"
+  Eb_App_Name      : "My_APP"
+  Eb_Enviroment_Var: "My_App-env"
+  Deploy_package_na: "my_app_${{ github.sha }}.zip"
+  Aws_Region_Name  : "eu-central-1"
+
+on:
+  push:
+    branches: 
+        - main
+
+jobs: 
+  my_ci:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Git clone our repo
+    - uses: actions/checkout@v1
+
+    - name: Create Zip deployment package
+      run : zip -r ${{ env.Deploy_package_na }} ./ -x *.git* 
